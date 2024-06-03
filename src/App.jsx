@@ -2,19 +2,24 @@ import './App.css'
 import Accordion from './components/01-Accordion/Accordion'
 import RandomColor from './components/02-RandomColor/RandomColor'
 import StarRating from './components/03-StarRating/StarRating'
+import ImageSlider from './components/04-ImageSlider/ImageSlider'
 
 function App() {
 
   return (
     <>
-    {/* Accordeon App */}
+    {/* 01 - Accordeon App */}
     {/* <Accordion /> */}
 
-    {/* Random color generator */}
+    {/* 02 - Random color generator */}
     {/* <RandomColor /> */}
 
-    {/* Star rating */}
-    <StarRating numberOfStars={5} />
+    {/* 03 - Star rating */}
+    {/* <StarRating numberOfStars={5} /> */}
+
+    {/* 04 - image slider */}
+    <ImageSlider url={"https://picsum.photos/v2/list"} page={"1"} limit={"5"} />
+
     </>
   )
 }
