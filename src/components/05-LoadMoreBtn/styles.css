@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 90%;
+  margin: auto;
+}
+
+.productContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.singleProduct {
+  padding: 18px;
+  border: 1px solid #cccccc;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.singleProduct img {
+  max-width: 200px;
+  margin: 0 auto;
+}
