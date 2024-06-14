@@ -7,7 +7,7 @@ function MenuList({list = []}) {
   return(
     <ul className="uListContainer">
       {
-        list && list.length ? 
+        list && list.length > 0 ? 
         list.map(listItem => <MenuItem item={listItem} />)
         : null
       }
