@@ -2,10 +2,9 @@
 
 Repo useful for ***React* projects**  . Learn about state, hooks, and more approaches.
 
-This repose uses *little to none* external modules, but you'll need to install the *little*, just in case:
+This repose uses *little to none* external modules, but you'll need to install the *little*, just in case. Open terminal and run the following line of code:
 
 ```js
-//run in terminal
 npm install
 ```
 
