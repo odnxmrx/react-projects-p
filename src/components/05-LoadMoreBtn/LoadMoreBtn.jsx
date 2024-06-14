@@ -22,13 +22,12 @@ function LoadMoreBtn() {
   async function fetchProducts() {
     try {
       setLoading(true);
-      const response = await fetch(`${URL_PRODUCTS}?limit=${LIMIT_PRODUCTS}&skip=${count === 0 ? 
-        0 
+      const response = await fetch(`${URL_PRODUCTS}?limit=${LIMIT_PRODUCTS}&skip=${count === 0 ?
+        0
         : count * LIMIT_PRODUCTS
         }`)
 
       const data = await response.json();
-      // console.log('la data fue: ', data);
 
       if (data && data.products && data.products.length) {
         // setProducts(data.products);
@@ -42,14 +41,11 @@ function LoadMoreBtn() {
     }
   }
 
-  //on component mount, fetch data
-  useEffect(() => {
+  useEffect(() => { //on component mount, fetch data
     fetchProducts();
   }, [count])
 
-
-  //useEffect to disable button
-  useEffect(() => {
+  useEffect(() => { //useEffect to disable button
     if (products && products.length === 100) setDisableButton(true);
   }, [products])
 
@@ -73,7 +69,7 @@ function LoadMoreBtn() {
       <div>
         <button onClick={() => setCount(count + 1)} disabled={disableButton}>Load more products</button>
         {
-          disableButton ? <p> No more products to display.</p> : null
+          disableButton && <p> No more products to display.</p>
         }
       </div>
     </div>
