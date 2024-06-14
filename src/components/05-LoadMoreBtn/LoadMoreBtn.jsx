@@ -8,7 +8,6 @@ import "./styles.css";
  */
 
 function LoadMoreBtn() {
-
   //'https://dummyjson.com/products?limit=10&skip=10&select=title,price'
   const URL_PRODUCTS = "https://dummyjson.com/products";
   const LIMIT_PRODUCTS = 6;
@@ -23,7 +22,9 @@ function LoadMoreBtn() {
   async function fetchProducts() {
     try {
       setLoading(true);
-      const response = await fetch(`${URL_PRODUCTS}?limit=${LIMIT_PRODUCTS}&skip=${count === 0 ? 0 : count * LIMIT_PRODUCTS
+      const response = await fetch(`${URL_PRODUCTS}?limit=${LIMIT_PRODUCTS}&skip=${count === 0 ? 
+        0 
+        : count * LIMIT_PRODUCTS
         }`)
 
       const data = await response.json();
