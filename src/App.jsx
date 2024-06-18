@@ -4,6 +4,7 @@ import RandomColor from './components/02-RandomColor/RandomColor'
 import StarRating from './components/03-StarRating/StarRating'
 import ImageSlider from './components/04-ImageSlider/ImageSlider'
 import LoadMoreBtn from './components/05-LoadMoreBtn/LoadMoreBtn'
+import TreeMenu from './components/06-TreeMenu/TreeMenu'
 
 function App() {
 
@@ -23,7 +24,11 @@ function App() {
 
 
     {/* 05 - Load More Products on Button Click */}
-    <LoadMoreBtn />
+    {/* <LoadMoreBtn /> */}
+
+
+    {/* 06 - Menu List Navigation, recursive */}
+    <TreeMenu />
 
     </>
   )
