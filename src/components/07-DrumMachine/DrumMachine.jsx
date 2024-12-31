@@ -65,7 +65,7 @@ const DrumMachine = () => {
 
         const handleKeyDown = (event) => {
             // console.log(event.keyCode);
-            console.log(event);
+            // console.log(event);
             // let tecla = event.key?.toUpperCase();
             // console.log('teclaaa ', tecla);
             handleKeyPress(event.keyCode);

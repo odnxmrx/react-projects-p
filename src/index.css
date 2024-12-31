@@ -35,6 +35,27 @@ h1 {
   line-height: 1.1;
 } */
 
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  gap: 15px;
+  justify-content: space-evenly;
+}
+
+nav ul li {
+  display: inline;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: blue;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
