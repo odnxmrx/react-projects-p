@@ -1,12 +1,10 @@
-// import React, { useEffect, useState } from "react";
-
-import { useRef, useState } from "react";
-
+import { useEffect, useRef, useState } from "react";
 
 const DrumMachine = () => {
 
     const currentAudioRef = useRef({}); //obj to store all audio refs
     const [audioName, setAudioName] = useState(""); // dynamic audio name to display
+
     const buttonsToDisplay = [
         { audioName: "Heater 1", buttonId: "heater-1", keyName: "Q", audioSrc: "https://cdn.freecodecamp.org/testable-projects-fcc/audio/Heater-1.mp3" },
         { audioName: "Heater 2", buttonId: "heater-2", keyName: "W", audioSrc: "https://cdn.freecodecamp.org/testable-projects-fcc/audio/Heater-2.mp3" },
@@ -19,26 +17,66 @@ const DrumMachine = () => {
         { audioName: "Closed HH", buttonId: "closed-hh", keyName: "C", audioSrc: "https://cdn.freecodecamp.org/testable-projects-fcc/audio/Cev_H2.mp3" }
     ]
 
-    //dinamically register refs
+    const keyAudioRelation = {
+        81: "heater-1",
+        87: "heater-2",
+        69: "heater-3",
+        65: "heater-4",
+        83: "clap",
+        68: "open-hh",
+        90: "kick-n-hat",
+        88: "kick",
+        67: "closed-hh",
+    }
+
+    //dinamically register each audio in ref {}
     const setAudioRef = (idAudio, item) => {
         currentAudioRef.current[idAudio] = item;
     }
 
     const handleClick = (event) => {
-        console.log('handleClick event keee?? ', event.target.id);
+        // console.log('handleClick event keee?? ', event.target.id);
         setAudioName(buttonsToDisplay.find((obj) => obj.buttonId === event.target.id).audioName);
-        console.log('encontro el dispName?? ', audioName);
-
+        // console.log('encontro el audioName?? ', audioName);
 
         const myAudio = currentAudioRef.current[event.target.id];
-        console.log('que es myAudio???? ', myAudio);
+        // console.log('que es myAudio???? ', myAudio);
 
         myAudio?.play();
 
-        console.log('whats currentAudioRef.current??? ', currentAudioRef.current);
+        // console.log('whats currentAudioRef.current??? ', currentAudioRef.current);
         //currentAudioRef.current.play(); //'play' is a method for audio/video html tags
     }
 
+    const handleKeyPress = (key) => {
+        // console.log('que es la key? ', key);
+        if (key === undefined) return;
+        // console.log('keyAudioRelation[key]: ', keyAudioRelation[key]);
+
+        const myAudio = currentAudioRef.current[keyAudioRelation[key]];
+        // console.log('que es myAudio???? ', myAudio);
+
+        myAudio?.play();
+        setAudioName(keyAudioRelation[key]);
+
+    }
+
+    useEffect(() => {
+
+        const handleKeyDown = (event) => {
+            // console.log(event.keyCode);
+            console.log(event);
+            // let tecla = event.key?.toUpperCase();
+            // console.log('teclaaa ', tecla);
+            handleKeyPress(event.keyCode);
+        }
+
+        document.addEventListener('keydown', handleKeyDown);
+
+        //return to cleanup
+    }, []);
+
+    // console.log('que es el currentAudioRef??? ', currentAudioRef);
 
     return (<>
         <h1>Drum Machine</h1>
@@ -47,7 +85,13 @@ const DrumMachine = () => {
             {buttonsToDisplay?.map((item, i) => {
                 return (
                     <button key={i} type="button" className="drum-pad" id={item.buttonId} onClick={handleClick}>
-                        <audio src={item.audioSrc} className="clip" id={item.keyName} ref={(el) => setAudioRef(item.buttonId, el)}></audio>
+                        <audio
+                            src={item.audioSrc}
+                            className="clip"
+                            id={item.keyName}
+                            // inline callback function
+                            ref={(el) => setAudioRef(item.buttonId, el)}>
+                        </audio>
                         {item.keyName}
                     </button>
                 )
